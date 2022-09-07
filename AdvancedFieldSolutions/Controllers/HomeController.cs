@@ -1,4 +1,5 @@
 ﻿using AdvancedFieldSolutions.Models;
+using AdvancedFieldSolutions.TranslatorRepositories;
 using Data.Business.Abstract;
 using Data.Business.Concrete;
 using Data.Entities;
@@ -27,32 +28,9 @@ namespace AdvancedFieldSolutions.Controllers
         [HttpPost]
         public async Task<JsonResult> CallTranslatedAPI(string text)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(url);
-                //HTTP POST
-                HttpResponseMessage Res = await client.GetAsync("?text=" + text);
-                if (Res.IsSuccessStatusCode)
-                {
-                    var record = Res.Content.ReadAsStringAsync().Result;
-                    var detailsReturn = JsonConvert.DeserializeObject<ReportsModel>(record);
-
-                    CallReport callReport = new CallReport()
-                    {
-                        Text = detailsReturn.contents.text ?? "",
-                        Translated = detailsReturn.contents.translated ?? "",
-                        Translation = detailsReturn.contents.translation ?? "",
-                        Total = detailsReturn.success.total
-                    };
-                    _recordsService.AddCallReport(callReport);
-                    return Json(true);
-                }
-                else
-                {
-                    return Json(false);
-                }
-
-            }
+            TranslatorProvider translatorProvider = new LeetSpeakTranslator(); // when we add new translator we just change the new ...Translator() and also add override the method.
+            var boolReturn = await translatorProvider.CallClientAsync(text);
+            return Json(boolReturn);
 
         }
     }
