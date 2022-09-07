@@ -1,4 +1,5 @@
-# Hi, here is the simple ASP.NET MVC application test that has authentication the system and register also. After log in to the system there is home page that we can translete the our word to call api.
+# Hi, here is the simple ASP.NET MVC application test that has authentication the system and register also. 
+#After log in to the system there is home page that we can translate the our string to call api.
 #Then Records database we have on the header part. We can see the all the data that we translated before with searchable property. User and Records tables we have to store the datas.
 # Here is the picture of app.
 
