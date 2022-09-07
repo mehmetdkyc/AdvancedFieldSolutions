@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+
+
+
+
+    <div class="row">
+        <div class="col text-center">
+            <h2 class="text-center">Translate Your Text</h2>
+            <div class="form-group">
+                <input id="textTranslate" type="text" class="form-control" placeholder="Enter your text" required="required" name="text">
+            </div>
+            <div class="form-group">
+                <button id="sendButton" type="submit" class="btn btn-primary btn-block" onclick="sendToApi();">Send</button>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script language="JavaScript" type="text/javascript" >
+
+    function sendToApi() {
+        var textEntered = $('#textTranslate').val();
+        $.post(
+            '/Home/CallTranslatedAPI', {
+            text: textEntered
+        }).done(function (data) {
+            if(data)
+                alert("Done :)");
+            else
+                alert("Too many request");
+        }).fail(function () {
+            alert("Error");
+        });
+    }
+</script>

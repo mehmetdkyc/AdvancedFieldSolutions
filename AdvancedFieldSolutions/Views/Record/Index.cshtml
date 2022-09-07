@@ -1,0 +1,51 @@
+﻿
+
+@model List<Data.Entities.CallReport>
+
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+<div>
+    <table id="detailDatatable" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Total</th>
+                <th>Text</th>
+                <th>Translated Text</th>
+                <th>Translation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0 || Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Total</td>
+                        <td>@item.Text</td>
+                        <td>@item.Translated</td>
+                        <td>@item.Translation</td>
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" defer></script>
+
+
+
+<script language="JavaScript" type="text/javascript">
+
+    $(document).ready(function () {
+        $('#detailDatatable').DataTable();
+    });
+
+</script>
