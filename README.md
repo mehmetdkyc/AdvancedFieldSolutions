@@ -1,8 +1,8 @@
 # Hi, here is the simple ASP.NET MVC application test that has authentication the system and register also. 
 #After log in to the system there is home page that we can translate the our string to call api.
-#Then Records database we have on the header part. We can see the all the data that we translated before with searchable property. User and Records tables we have to store the datas.
+#Then Records datatable we have on the header part. We can see the all the data that we translated before with searchable property. User and Records tables we have to store the datas.
 # Here is the picture of app.
-
+#I use the extendable translator to add new translator in the future using solid principles. And also there is repository dessign pattern to crud operation for user and records tables.
 
 ![Screenshot_1](https://user-images.githubusercontent.com/50601213/188999939-4ae9c354-2109-447b-a7cc-975415b9fc90.png)
 ![Screenshot_2](https://user-images.githubusercontent.com/50601213/188999942-ab0a9ba8-629a-4fbd-aba2-718a8129f02a.png)
